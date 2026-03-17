@@ -3,12 +3,8 @@
 Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
 
 ## 1. What was broken when you started?
+When I first ran the game, it looked normal, but the behavior was incorrect when I started guessing numbers. For example, when I entered the number 1, the game told me to “go lower,” which does not make sense because 1 is already the lowest value in the range. I also noticed that the difficulty modes were broken. In easy mode, the range was 1 to 20, but the secret number was 55, which is outside the range, and the same issue happened in hard mode. Additionally, the hints were sometimes reversed, such as telling me to “go higher” when my guess was already higher than the secret number.
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
-
----
 
 ## 2. How did you use AI as a teammate?
 
