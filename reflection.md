@@ -1,41 +1,20 @@
 # 💭 Reflection: Game Glitch Investigator
 
-Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
-
 ## 1. What was broken when you started?
+While testing the game, I noticed that when I entered the number 1, the game sometimes told me to “go lower,” which didn’t make sense because 1 is already the minimum value. This helped me realize there was an issue with how the hint logic handled boundary cases. I also found that the game allowed out-of-range inputs, which could lead to confusing or incorrect feedback. I identified these bugs by playing the game multiple times and paying attention to inconsistent hints and behavior.
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+##2 How did you use AI as a teammate?
 
----
+-I used Copilot Chat to analyze the relationship between app.py and logic_utils.py and understand how the hint logic was implemented. It correctly suggested that the issue might be related to missing edge case handling and lack of input validation. I also used Inline Chat to get step-by-step explanations of specific parts of the code, which helped me understand the logic more clearly. One misleading suggestion was that the issue could be caused by the random number generation, but I verified through testing that this was not the case.
 
-## 2. How did you use AI as a teammate?
+3. Debugging and testing your fixes
+I used pytest to verify that my fixes worked correctly. At first, the pytest command was not recognized, so I installed it using python -m pip install pytest and then ran the tests using python -m pytest. All three tests passed successfully, confirming that the check_guess function returns the correct results for "Too High", "Too Low", and "Win".
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-
----
-
-## 3. Debugging and testing your fixes
-
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
-
----
+I also manually tested the game by running it with Streamlit and entering edge case values like the minimum number and out-of-range inputs. After adding validation, the game no longer produces incorrect hints and behaves as expected.
 
 ## 4. What did you learn about Streamlit and state?
-
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-
----
+I learned that Streamlit reruns the entire script every time the user interacts with the app, like when clicking a button or entering input. At first, this was confusing because it seemed like the game kept resetting, but I realized that session state is what keeps important data like the secret number and attempts from being lost. Without session state, the game wouldn’t be able to track progress between interactions. Understanding this helped me see how Streamlit manages interactivity in a simple but powerful way.
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+One habit I want to reuse is testing my code more intentionally using pytest instead of just relying on manual testing. Writing small, focused tests helped me confirm that my logic was working correctly and gave me more confidence in my fixes. I also found it useful to break problems into smaller parts and ask AI specific questions instead of one big vague prompt. This made debugging faster and easier to understand.
